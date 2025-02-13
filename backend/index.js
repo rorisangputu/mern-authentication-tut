@@ -8,6 +8,9 @@ const app = express();
 
 const PORT = process.env.PORT || 3000;
 
+app.get("/", (req, res) => {
+    res.send({message: "Helloooo"})
+})
 app.listen(PORT, () => {
     databaseConn
     console.log("Listening on Port 3000")
