@@ -1,4 +1,4 @@
-import { Schema } from "mongoose";
+import { model, Schema } from "mongoose";
 
 const userSchema = new Schema({
     email: {
@@ -26,4 +26,6 @@ const userSchema = new Schema({
     resetPasswordExpiresAt: Date,
     verificationToken: String,
     verificationTokenExpiresAt: Date,
-}, {timestamps: true})
+}, { timestamps: true });
+
+export const User = model('User', userSchema);
