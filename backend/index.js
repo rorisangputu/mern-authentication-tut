@@ -6,8 +6,9 @@ import authRoutes from './routes/auth.route.js'
 
 const databaseConn = connectDb();
 const app = express();
-
+app.use(express.json()); // allows us to parse incoming requests :req.body
 const PORT = process.env.PORT || 5000;
+
 
 
 app.use("/api/auth", authRoutes);
