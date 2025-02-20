@@ -38,17 +38,17 @@ export const signup = async (req, res) => {
             user: {
                 ...user._doc,
                 password: undefined
-            }
-        })
+            },
+        });
 
 
-    } catch {
+    } catch(error) {
         return res.status(400).json({ success: false, message: error.message});
     }
 }
 
 export const login = async (req, res) => {
-
+    res.send("Ollllaaa")
 }
 export const logout = async (req, res) => {
 
