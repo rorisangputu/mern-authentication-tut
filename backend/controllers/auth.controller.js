@@ -60,6 +60,14 @@ export const verifyEmail = async (req, res) => {
         if (!user) {
             return res.status(400).json({success: false, message: "Invalid or expired verification code"})
         }
+
+        user.isVerfied = true;
+        user.verificationToken = undefined;
+        user.verificationTokenExpiresAt = undefined;
+        await user.save();
+
+        await sendWelcomeEmail(user.email, user.name);
+
     } catch (error) {
         
     }
