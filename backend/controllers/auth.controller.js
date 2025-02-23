@@ -48,6 +48,7 @@ export const signup = async (req, res) => {
         return res.status(400).json({ success: false, message: error.message});
     }
 }
+
 export const verifyEmail = async (req, res) => {
     // 1 2 3 4 5 
     const { code } = req.body;
@@ -80,9 +81,15 @@ export const verifyEmail = async (req, res) => {
         res.status(500).json({ success: false, message: "Server error" });
     }
 }
+
 export const login = async (req, res) => {
     res.send("Ollllaaa")
 }
-export const logout = async (req, res) => {
 
+export const logout = async (req, res) => {
+    res.clearCookie("token");
+    res.status(200).json({
+        success: true,
+        message: "Logged out successfully"
+    });
 }
