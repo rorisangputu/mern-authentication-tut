@@ -29,11 +29,11 @@ export const signup = async (req, res) => {
         })
         
         await user.save();
-
+        // console.log("User email: ", user.email)
         //jwt
         generateTokenAndSetCookie(res, user._id);
         await sendVerificationEmail(user.email, verificationToken)
-        
+
         res.status(201).json({
             success: true,
             message: "User created succesfully",
@@ -48,7 +48,9 @@ export const signup = async (req, res) => {
         return res.status(400).json({ success: false, message: error.message});
     }
 }
-
+export const verifyEmail = async (req, res) => {
+    
+}
 export const login = async (req, res) => {
     res.send("Ollllaaa")
 }
